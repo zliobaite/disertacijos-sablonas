@@ -1,0 +1,53 @@
+\chapter{Introduction}
+\label{cha:intro}
+
+We live in a dynamic world, where changes are a part of everyday life.
+When there is a shift in data, the classification or prediction models need to be adaptive to the changes.
+In data mining the phenomenon of change in data over time is known as \emph{concept drift}.
+
+
+In this thesis we consider supervised learning under concept drift. In particular, we are interested in the training set formation strategies, which lead to achieving adaptivity to concept drift.
+
+In this chapter we depict the research area, give motivating application examples and present the research outline and methodology. We define and narrow down a specific research problem and formulate the research questions.
+We finish the chapter by outlining and depicting the structure of the thesis.
+
+%-------------------------------
+\section{Application Examples}
+
+Changes in underlying data might occur due to changing personal interests, changes in population, adversary activities or they can be attributed to a complex nature of the environment.
+Consider three motivating examples illustrating \emph{a concept drift} phenomenon.
+
+\begin{example} [Fraud detection]
+\label{exa:fraud}
+The estimated loss of UK issued credit cards amounts to 610 million pounds in year 2008 \cite{cardwatch}. These costs are born by the banking industry and indirectly by users via increased premium for card insurance. The financial institutions employ filters to data mine and monitor daily transactions.
+
+The classification decisions need to be made online, and the behavior of both legitimate users and criminals is shifting. Moreover, the criminals might try using adversary tactics to overcome the fraud detection mechanisms. Therefore the filters used for monitoring need to be reactive to changing adversary behavior to keep the classification accuracy. Similar motivation applies to computer network security monitoring, e-mail spam filtering.
+\end{example}
+
+\begin{example}[News recommendation]
+\label{exa:Kate}
+Kate reads news on the internet every day.
+She uses a news recommender system, which provides a ranked list of headlines of potential interest to Kate.
+The recommender model is constantly updated using the records of her browsing history.
+
+Kate has different interests.
+She likes Formula-1 sport, thus she reads the overviews of the races every second or third Monday, but not in winter when there are no races (long term interest).
+Recently she got an assignment at work to write a review on meat prices in New Zealand (short term temporal interest).
+She is also thinking if it is the right time to purchase a flat, thus her interest in real estate market situation has recently been increasing (gradual increase in interest).
+
+The learning models in the news recommender system need to be adaptive over time to take into account short and long term interests, sudden and gradual changes.
+\end{example}
+
+\begin{example} [Navigation]
+\label{exa:darpa}
+The DARPA Grand Challenge is a prize competition for driverless cars \cite{DARPA}. %, see Figure \ref{fig:car}.
+\begin{quotation}
+This event required teams to build an autonomous vehicle capable of driving in traffic, performing complex maneuvers such as merging, passing, parking and negotiating intersections.  $<\ldots>$ The autonomous vehicles have interacted with both manned and unmanned vehicle traffic in an urban environment. $<\ldots>$  Robots were also being judged on their ability to follow California driving rules.
+\end{quotation}
+The sensors in the vehicles are monitoring the road conditions and classifying them for the selection of a driving mode. The road is changing, the decisions need to be made in real time and it is not possible to account for every possible combination of road changes in advance. Therefore the winning entry in year 2005  `Stanley' \cite{Thrun06} was equipped with an adaptive learner (adaptive Mixture of Gaussians).
+
+Obviously, unmanned vehicles are not limited to competitions. They are irreplaceable in situations where it is dangerous (e.g. ecological accidents), infeasible (e.g. in space) to employ a human driver.
+\end{example}
+
+
+These application examples give a motivation for the learners to be equipped with the concept drift adaptation mechanisms. The need for adaptation mechanisms in data mining are discussed in a number of position papers \cite{Kelly99,Webb01,Dong03,Hand06,Kriegel07,Han09} for about a decade. In the next section we take a closer look, what adaptation mechanisms mean.

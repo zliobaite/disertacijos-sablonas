@@ -1,0 +1,46 @@
+\def\interpti{\relax}%
+\def\invardinti#1{%
+     \trivlist\item[\hskip\labelsep{\bfseries#1}}%]
+\def\atstumti{\endtrivlist}%\interpti}
+\newif\ifRoman
+\def\Fshape{\ifRoman\rmfamily\else\itshape\fi}
+\newcommand{\trivardis}[3]{\invardinti{#1\ #2}\ (#3).]\Fshape}
+\newcommand{\dvivardis}[2]{\invardinti{#1\ #2.}]\Fshape}
+\makeatletter
+\let\@opargbegintheorem\trivardis
+\let\@begintheorem\dvivardis
+\let\@endtheorem\atstumti
+\newcommand{\newproclaim}[3]{\newenvironment{#1}{\global\finishedfalse
+   \Romantrue\@thm{#2}{#3}}{\finish\atstumti}}
+\makeatother
+\newif\iffinished\finishedtrue
+\newcommand{\finish}{\iffinished\else\ifhmode\nolinebreak\fi\nopagebreak%
+   \qquad\ifhmode\nolinebreak\fi\nopagebreak%
+   \ensuremath{\square}\global\finishedtrue\fi}
+
+\newtheorem{claim}{Proposition}[section]
+\newtheorem{corollary}[claim]{Corollary}
+\newtheorem{theorem}[claim]{Theorem}
+\newtheorem{lemma}[claim]{Lemma}
+\newproclaim{definition}{claim}{Definition}
+\newproclaim{example}{claim}{Example}
+\newproclaim{remark}{claim}{Remark}
+\newproclaim{notation}{claim}{Notation}
+\newenvironment{proof}{\invardinti{Proof.}\global\finishedfalse]}{\finish\atstumti}
+\newenvironment{princ}[1]{\invardinti{#1}]\itshape}{\atstumti}
+\newenvironment{prule}[1]{\paragraph{#1}\equation}
+                         {\endequation\addvspace{1ex plus.2ex minus .2ex}}
+
+
+\newcommand{\allmoodsA}{\ensuremath{:\mkern-4mu-\allmoodslipsA}}
+\newcommand{\allmoodsB}{\ensuremath{:\mkern-4mu-\mkern-3mu\allmoodslipsB}}
+\newcommand{\allmoodslipsA}{\ensuremath{)\mkern-7.3mu|\mkern-7mu(}}
+\newcommand{\allmoodslipsB}{\ensuremath{)\mkern-4.8mu|\mkern-4.4mu(}}
+
+\newenvironment{Abstract}{%
+	\begin{center}
+		\textbf{Abstract}%
+ 	\end{center}
+ 	\small \it \begin{quote}
+}
+{\end{quote}}

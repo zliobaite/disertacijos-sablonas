@@ -1,0 +1,80 @@
+\usepackage{ifpdf}
+
+\input{macros/layout.tex}
+	
+\ifpdf
+\usepackage[pdftex]{hyperref,graphicx} % pdf references support
+
+\hypersetup{%
+	pdfauthor   = {Indre Zliobaite},
+	pdftitle    = {Adaptive Feature Set Formation},
+	pdfsubject  = {PhD Thesis},
+	pdfkeywords = {},
+	pdfcreator  = {LaTeX with hyperref package},
+	pdfproducer = {pdflatex},
+	breaklinks  = {true},
+	pdfstartview = {FitH},
+	bookmarksnumbered = {true},
+	bookmarksopen = {true},	
+	bookmarksopenlevel = 2,
+	plainpages={false},
+	pdfpagetransition={Dissolve},	
+}
+\else
+\usepackage[dvips,ps2pdf]{hyperref,graphicx} % pdf references support
+\fi
+
+% ----- packages ---------------------------------------------------------
+\renewcommand{\contentsname}{Table of Contents}
+\usepackage[british]{babel}		% british-english style
+
+\usepackage{amssymb}					% extra AMS math symbols
+\usepackage{amsfonts}					% extra AMS math symbols
+\usepackage{amsmath}					% AMS 
+\usepackage[mathscr]{euscript}
+
+\usepackage{xcolor}				% colors support
+\renewcommand{\topfraction}{0.85}	%% 85% of page can contain figure
+\renewcommand{\textfraction}{0.1}	%% 10% of page can contain text
+\renewcommand{\floatpagefraction}{0.75}	%% 75% of page should be figure to be only float page
+
+\usepackage[square,comma,numbers,sort&compress]{natbib}	% citations
+\setlength{\bibsep}{0ex}
+
+\usepackage{fancyhdr}		% fancy headings and footers
+
+\usepackage{sectsty}			% change sections fonts									
+\setcounter{secnumdepth}{3}	% depth of enumerated sections
+
+\ifpdf
+	\usepackage{microtype}		% experimental
+\else
+\fi
+
+\usepackage{makeidx}			% index package
+\makeindex								% generate index entries
+\usepackage{fix2col}			% fix two-column marks
+\input{macros/index.tex}	% macros for dictionary like index			
+
+\usepackage{palatino}				% IZ selection
+\usepackage[T1]{fontenc}		% modern tex fonts
+
+\usepackage{verbatim} %IZ: multiline komentams 
+
+\usepackage{paralist}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\setlength{\belowcaptionskip}{5pt}
+
+\usepackage{rotating}	
+
+\usepackage{epigraph}	
+
+\usepackage[all]{xy} %strelytem paisyt, chapter 3
+
+\usepackage{hyphenat}
+
+% ----- macros ---------------------------------------------------------
+\input{macros/iz_macros.tex}
+\input{macros/headings.tex}

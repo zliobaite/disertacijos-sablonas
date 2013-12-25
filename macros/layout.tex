@@ -1,0 +1,51 @@
+% [file: layout.tex, started: 18-March-2008]
+%
+% NOTES
+%   This macro file contains page layout info for Ph.D. thesis
+%
+% CHANGES
+%   2008.03.18	*	Started.
+
+% ----- layout parameters ------------------------------------------------
+\ifpdf
+	\usepackage[dvips=false, pdftex=true, vtex=false]{geometry}
+\else
+	\usepackage[dvips=true, pdftex=false, vtex=false]{geometry}
+\fi
+
+%% VU requirements
+%% A4
+%% right and left margins = 3.2cm
+%% top and bottom margins = 2.6cm
+\geometry{%
+ 	a4paper,
+ 	bindingoffset=0pt,
+ 	centering,
+ 	vmargin=26mm,
+ 	hmargin=32mm,
+ 	includehead,
+ 	includefoot
+}  
+  
+\raggedbottom                           % height of text may vary per page
+
+\newlength{\oldparindent}
+\newlength{\oldparskip}
+
+\newcommand{\IZParagraph}{%
+    \setlength{\oldparindent}{\parindent}
+    \setlength{\oldparskip}{\parskip}
+    \setlength{\parindent}{0pt}            % no indent
+    \setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}    % space between paragraphs
+}
+
+\newcommand{\restoreParagraph}{%
+    \setlength{\parindent}{\oldparindent}
+    \setlength{\parskip}{\oldparskip}
+}
+
+%% VU requirements
+%% 1.5 linespacing
+%\linespread{1.3}
+\usepackage{setspace}
+\onehalfspacing

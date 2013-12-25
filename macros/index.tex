@@ -1,0 +1,30 @@
+\makeatletter
+\renewenvironment{theindex}
+	{%
+	\if@twocolumn
+  	\@restonecolfalse
+  \else
+  	\@restonecoltrue
+	\fi
+	%
+	\columnseprule \z@
+	\columnsep 25\p@
+	\twocolumn[\@makeschapterhead{\indexname}]%
+	\@mkboth{\MakeUppercase\indexname}%
+					{\MakeUppercase\indexname}%
+	\thispagestyle{plain}\parindent\z@
+	\parskip\z@ \@plus .3\p@\relax			
+	\let\item\@idxitem	
+	}
+	{\if@restonecol\onecolumn\else\clearpage\fi}
+%%
+
+\renewcommand\@idxitem{\par\hangindent 30\p@}
+\renewcommand\subitem{\@idxitem \hspace*{10\p@}}
+\renewcommand\subsubitem{\@idxitem \hspace*{20\p@}} 
+
+\renewcommand{\see}[2]{\emph{\seename}~{#1}}
+\newcommand{\justsee}[2]{{#1}}
+
+
+\makeatother

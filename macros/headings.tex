@@ -1,0 +1,49 @@
+\newcommand{\IZheading}[1]{\scriptsize{\textit{#1}}}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+
+\newcommand{\IZThesisHeadings}{%
+	\fancyhead{}\fancyhead[LE]{\IZheading{\IZheading{\leftmark}}}\fancyhead[RO]{\IZheading{\rightmark}}
+	\fancyfoot{}
+	\fancyfoot[c]{\thepage}
+	\fancypagestyle{plain}{%
+		\fancyhf{}
+		\fancyfoot[c]{\thepage}
+		\renewcommand{\headrulewidth}{0pt}
+	}
+}
+
+\makeatletter
+\def\cleardoublepage{%
+	\clearpage\if@twoside \ifodd\c@page\else%
+	\hbox{}%
+	\thispagestyle{empty}%
+	\newpage%
+	\if@twocolumn\hbox{}\newpage\fi\fi\fi
+}
+
+\makeatother
+    
+\makeatletter	
+\newcommand{\itemhdr}[1]{\par\hangindent 30\p@\relax{#1}\markboth{#1}{#1}}
+\makeatother
+
+\newcommand{\indexmarks}{%
+	\fancyhead[R]{\IZheading{\leftmark}}
+	\fancyhead[L]{\IZheading{\rightmark}}
+}
+
+\newcommand{\parammarks}[1]{%
+	\fancyhead{}
+	\fancyhead[RO,LE]{}
+	\fancyhead[RO,LE]{\IZheading{#1}}
+	\fancyfoot{}
+	\fancyfoot[c]{\thepage}
+	\fancypagestyle{plain}{%
+		\fancyhf{}	
+		\fancyfoot[c]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+	}
+}

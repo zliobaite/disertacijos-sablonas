@@ -1,0 +1,70 @@
+\usepackage{ifpdf}
+
+\input{macros/layout_santrauka.tex}
+	
+\ifpdf
+%% pdf package
+\usepackage[pdftex]{hyperref,graphicx} % pdf references support
+
+\hypersetup{%
+	pdfauthor   = {Indre Zliobaite},
+	pdftitle    = {Adaptive Feature Set Formation},
+	pdfsubject  = {PhD Thesis},
+	pdfkeywords = {},
+	pdfcreator  = {LaTeX with hyperref package},
+	pdfproducer = {pdflatex},
+	breaklinks  = {true},
+	pdfstartview = {FitH},
+	bookmarksnumbered = {true},
+	bookmarksopen = {true},	
+	bookmarksopenlevel = 2,
+	plainpages={false},
+	pdfpagetransition={Dissolve},	
+}
+\else
+\usepackage[dvips,ps2pdf]{hyperref,graphicx} % pdf references support
+\fi
+
+% ----- packages ---------------------------------------------------------
+\usepackage[L7x]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{aeguill}
+\usepackage[lithuanian, british]{babel}
+\usepackage{ogonek}
+\newcommand{\british}{\selectlanguage{british}}
+\newcommand{\lithuanian}{\selectlanguage{lithuanian}}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[mathscr]{euscript}
+
+\usepackage{color}			
+
+\usepackage[square,comma,numbers,sort&compress]{natbib}	
+
+\usepackage{fancyhdr}		
+
+\setcounter{secnumdepth}{3}	
+
+\ifpdf
+	\usepackage{microtype}		
+\else
+\fi
+
+\usepackage{verbatim} %IZ: multiline komentams 
+
+\usepackage{paralist}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\setlength{\belowcaptionskip}{5pt}
+
+\usepackage{rotating}	
+
+\usepackage[all]{xy} 
+
+% ----- macros ---------------------------------------------------------
+\input{macros/iz_macros.tex}
+\input{macros/headings_santrauka.tex}

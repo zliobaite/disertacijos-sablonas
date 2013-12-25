@@ -1,0 +1,37 @@
+\chapter{Derivations and Computation Details}
+\label{cha:derivations}
+
+%---------------------------------------------------------------------------------------------------
+\section{Change Detection Using Hotelling T-test}
+\label{sec:hotelling}
+\index{Hotelling T-test}
+
+Suppose that we have the labeled sequence of observations labeled in $c$ classes. To estimate the likelihood of a change at time $d$, where $1\leq d\leq t$, we assume that the class means migrate independently of one another. Then the probability that there is a change at time $d$ is
+\[
+P(\mbox{change}|d) = 1 - \prod_{k=1}^cP(\mbox{no change in }\mu_k|d),
+\]
+where $\mu_k$ is the mean for class $k$, $k=1,\ldots,c$. Given that the data lives in $\Re^n$, the value of $P(\mbox{no change in }\mu_k|d)$ can be estimated using the p-value of the Hotelling multivariate $T^2$-test. This test compares the means for class $k$ before and after the hypothetical change at $d$.
+
+The mean before the change, $\mu_k^{(1)}$, is estimated from the streaming data from 1 to $d$ labeled in class $k$; the mean after the change, $\mu_k^{(2)}$, is estimated from the streaming data from $d+1$ to $t$ labeled in class $k$. Let $\hat\Sigma$ be the unbiased pooled covariance matrix estimated from the data and $N_1$ and $N_2$ be the respective sizes of the two samples. The $T^2$ statistic is
+\begin{equation}
+T^2 = \frac{(N_1 + N_2 - n - 1)}{n(N_1 + N_2 - 2)} \frac{N_1N_2}{(N_1 + N_2)} \;\hat{\delta^2}
+\end{equation}
+where $\hat{\delta^2}$ is the squared Euclidean distance
+$\hat{\delta^2}=\left(\hat \mu_k^{(1)}- \hat \mu_k^{(2)}\right)^T \;\hat\Sigma^{-1}\;
+\left(\hat \mu_k^{(1)}- \hat \mu_k^{(2)}\right).$
+
+If the two means come from the same distribution, $T^2$ has $F$-distribution with degrees of freedom $(n, N_1+N_2-1-n)$.
+
+If we use the notation $p_k(d)$ as the $p$-value returned by the Hotelling $T^2$-test comparing class $k$ samples before and after time moment $d$, the probability of change at $d$ can be estimated as
+\begin{equation}
+P(\mbox{change}|d) = 1 - \prod_{i=1}^cp_k(d).
+\end{equation}
+
+To arrive at a probability distribution  over $t_1,\ldots,t_i$, we can normalize by dividing the conditional probability (\ref{condprob}) by
+\begin{equation}
+P(\mbox{change},t_k) = \frac{P(\mbox{change}|t_k)}{\sum_{d=1}^i P(\mbox{change}|t_d)}.
+\end{equation}
+%%
+\enlargethispage{2\baselineskip}
+%%
+In order to calculate the distribution, we need to check all possible split points between $t_1$ and $t_n$, as done in other studies performing retrospective change detection \cite{Kifer04,Bifet07,Adams07}.

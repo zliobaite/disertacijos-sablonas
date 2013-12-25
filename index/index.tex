@@ -1,0 +1,23 @@
+% [file: index.tex, started: 25-Aug-2005]
+%
+% PhD Thesis - top level LaTeX source file.
+%
+% DESCRIPTION
+%   This file includes Index chapter of the PhD Thesis. 
+%
+% CHANGES
+%   2005.08.25  *  Started.
+%   2008.03.18  *  Adapted to IZ.
+
+%\chapter{Index}
+%	\label{chapter:Index}
+
+\addtocontents{toc}{\protect\enlargethispage{2\baselineskip}}
+\phantomsection
+\addcontentsline{toc}{chapter}{\numberline{}Index}
+
+\indexmarks
+
+{\raggedright
+\printindex
+}
